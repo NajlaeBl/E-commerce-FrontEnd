@@ -1,0 +1,45 @@
+<div *ngIf="products">
+  <div *ngFor="let p of products._embedded.products">
+    <div class="col-md-6">
+      <div class="panel panel-default heigted">
+        <div class="panel-heading">{{p.name}}</div>
+        <div class="panel-body">
+
+          <table>
+            <tr>
+              <td rowspan="3">
+                <img height="100" src="{{this.catalogueService.host+'/photoProduct/'+p.id}}" />
+               <div  *ngIf="isAdmin()">
+
+               </div>
+                <p> <button (click)="onEditPhoto(p)">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button> </p>
+                <p *ngIf="editPhoto && currentProduct==p">
+                  <input type="file" (change)="onSelectedFile($event)">
+                  <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+                  {{progress}}
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <a>Description</a>
+              <td>{{p.description}}</td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <a>Price</a>
+              <td>{{p.currentPrice|number: '0.2'}}</td>
+            </tr>
+
+
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
