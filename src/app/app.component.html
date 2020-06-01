@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
 
@@ -26,7 +27,7 @@
     <ul class="nav navbar-nav pull-right">
       <li>
         <a class="btn" (click)="onLogout()">
-          <span class = "glyphicon glyphicon-log-out"></span>
+          <span class="glyphicon glyphicon-log-out"></span>
 
         </a>
       </li>
@@ -41,8 +42,9 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="list-group" *ngIf="categories">
-      <li [ngClass]="currentCategorie==c?'active':''"  (click)="getProductsByCat(c)" class="list-group-item clickable" *ngFor="let c of categories._embedded.categories">
-           {{c.name}}
+      <li [ngClass]="currentCategorie==c?'active':''" (click)="getProductsByCat(c)" class="list-group-item clickable"
+        *ngFor="let c of categories._embedded.categories">
+        {{c.name}}
       </li>
     </ul>
   </div>
@@ -53,5 +55,3 @@
     </router-outlet>
   </div>
 </div>
-
-

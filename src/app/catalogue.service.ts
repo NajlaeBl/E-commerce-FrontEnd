@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,14 +17,18 @@ export class CatalogueService {
   }
 
 
-  uploadPhotoProduct(file: File, idProduct): Observable<HttpEvent<{}>> {
-    let formdata: FormData = new FormData();
-    formdata.append('file', file);
-    const req = new HttpRequest('POST', this.host + '/uploadPhoto/' + idProduct, formdata, {
-      reportProgress: true,
-      responseType: 'text'
-    });
+  uploadPhotoProduct(file, idProduct): Observable<any> {
+    const formdata = new FormData();
+    console.log(idProduct);
+    formdata.append('image', file);
+    /* const req = new HttpRequest('POST', this.host + '/uploadPhoto/' + idProduct, formdata, {
+       reportProgress: true,
+       responseType: 'text'
+     });*/
+    return this.http.post(this.host + '/uploadPhoto/' + idProduct.id, formdata);
+    //return this.http.post(this.host + '/Test', { test: "test" });
 
-    return this.http.request(req);
+
+
   }
 }
